@@ -38,7 +38,8 @@ export class ExpressAppConfig {
         this.app.use(bodyParser.raw({ type: 'application/pdf' }));
 
         this.app.use(this.configureLogger(appOptions.logging));
-        this.app.use(express.json());
+        this.app.use(express.json({ type: 'application/*+json' }));
+
         this.app.use(express.urlencoded({ extended: false }));
         this.app.use(cookieParser());
 
